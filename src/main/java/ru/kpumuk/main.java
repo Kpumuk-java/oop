@@ -31,7 +31,6 @@ public class main {
 
         List<Integer> list = new LinkedList<>();
 
-        list.
 
         LinkedListCopy<Integer> linkedListCopy = new LinkedListCopy<>();
         linkedListCopy.add(1);
