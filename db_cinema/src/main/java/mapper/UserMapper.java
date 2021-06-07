@@ -10,7 +10,6 @@ import java.util.*;
 
 public class UserMapper {
     private final Connection connection;
-    private HashSet<User> users;
     private String FOUND_USER_BY_ID = "SELECT id, name, age FROM users WHERE id = ?";
     private String UPDATE_USER_BY_ID = "UPDATE users SET name = ?, age = ? WHERE id = ?";
     private String SAVE_USER_BD = "INSERT INTO users (id, name, age) VALUES (?, ?, ?)";
@@ -18,11 +17,10 @@ public class UserMapper {
 
     public UserMapper(Connection c) {
         this.connection = c;
-        users = new HashSet<>();
     }
 
 
-    public User findById (String id) throws SQLException {
+    /*public User findById (String id) throws SQLException {
         if (!users.isEmpty()) {
             for (User u : users) {
                 if (u.getId().equals(id)) {
@@ -107,5 +105,5 @@ public class UserMapper {
 
     public HashSet<User> getUsers () {
         return users;
-    }
+    }*/
 }

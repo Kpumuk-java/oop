@@ -11,7 +11,7 @@ public class InitDB {
 
     public Connection getConnection () throws SQLException {
         try {
-            Connection connection = DriverManager.getConnection(DB_URL,DB_USER, DB_PASSWORD);
+            Connection connection = DriverManager.getConnection("jdbc:h2:mem:test",DB_USER, DB_PASSWORD);
             return connection;
         } catch (SQLException e) {
             e.printStackTrace();
