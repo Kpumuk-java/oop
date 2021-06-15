@@ -13,15 +13,29 @@
 * */
 
 import dao.StudentDao;
-import db.InitDB;
+import entity.Student;
 
 public class Main {
     public static void main(String[] args) {
-        //InitDB initDB = new InitDB();
         FactorySession factorySession = new FactorySession();
         factorySession.init();
         StudentDao studentDao = new StudentDao(factorySession.getFactory());
-        System.out.println(studentDao.findById((long) 1).get());
+        System.out.println(studentDao.findById(1L).get());
+        System.out.println(studentDao.findAll().toString());
+        studentDao.deleteById(1L);
+        System.out.println(studentDao.findAll().toString());
+        studentDao.saveOrUpdate(new Student().setName("Solt").setMark(4));
+        System.out.println(studentDao.findAll().toString());
+        Student s1  = studentDao.findById(3L).get().setName("John1");
+        studentDao.saveOrUpdate(s1);
+        System.out.println(studentDao.findAll().toString());
+
+        for (int i = 0; i <= 1000; i++) {
+            studentDao.saveOrUpdate(new Student().setName("Example" + i).setMark(1 + (int) (Math.random() * 5)));
+        }
+        System.out.println(studentDao.findAll().toString());
+
+        factorySession.shutDown();
 
 
     }

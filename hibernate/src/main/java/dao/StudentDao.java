@@ -3,6 +3,8 @@ package dao;
 import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 import java.util.Optional;
 
 
@@ -21,17 +23,17 @@ public class StudentDao {
     public Optional<Student> findById (Long id) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            Student s = session.createQuery("select s from student s where s.id = " + id, Student.class).getSingleResult();
+            Student s = session.createQuery("Select s from student s where id = " + id, Student.class).getSingleResult();
             session.getTransaction().commit();
             return Optional.ofNullable(s);
         }
     }
 
-    /*
-    public List<Product> findAll () {
+
+    public List<Student> findAll () {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            List<Product> list = session.createQuery("select p from products p", Product.class).getResultList();
+            List<Student> list = session.createQuery("select s from student s", Student.class).getResultList();
             session.getTransaction().commit();
             return list;
         }
@@ -40,18 +42,18 @@ public class StudentDao {
     public void deleteById (Long id) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            Product p = session.get(Product.class, id);
-            session.delete(p);
+            Student s = session.get(Student.class, id);
+            session.delete(s);
             session.getTransaction().commit();
         }
     }
 
-    public Product saveOrUpdate (Product product) {
+    public Student saveOrUpdate (Student student) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            session.saveOrUpdate(product);
+            session.saveOrUpdate(student);
             session.getTransaction().commit();
-            return product;
+            return student;
         }
-    }*/
+    }
 }
