@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Spring table students</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Spring table students</h1>
+<br />
+    <table class="table table-hover" cellpadding="0" cellspacing="0">
+        <thead>
+        <tr>
+            <td>Имя</td>
+            <td>Возраст</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each ="student :${students}">
+            <td th:utext="${student.name}">...</td>
+            <td th:utext="${student.age}">...</td>
+            <td>
+                <button class="btn btn-danger" th:action="@{/}" method="delete" th:object="${student.id}" >Удалить</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
