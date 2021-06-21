@@ -7,6 +7,7 @@
     <groupId>java-web</groupId>
     <artifactId>java-web</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
@@ -40,7 +41,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://localhost:8080/manager/hello</url>
+                    <url>http://localhost:8080/manager/text</url>
                     <username>root</username>
                     <password>root</password>
                     <path>/hello</path>
