@@ -1,7 +1,7 @@
 
 create table films (
                        id                      bigserial primary key,
-                       name                    varchar(256) not null,
+                       name                    varchar(80) not null,
                        time                    int not null
 );
 
@@ -47,19 +47,4 @@ values
 (1, 150), (9, 200), (9, 200), (9, 200), (9, 200), (9, 200), (10, 200), (10, 200), (11, 300), (11, 300), (11, 300), (11, 300),
 (2, 250),  (11, 300), (11, 300), (11, 300), (11, 300),  (12, 300), (12, 300), (12, 300), (12, 300), (12, 300),
 (2, 250);
-
-WITH interval as (
-    select A.film_id,
-           A.id as session_id,
-           B.name,
-           A.begin_film,
-           DATEADD('MINUTE', + B.time, A.begin_film) as end_time
-    from time_session A
-    inner join films B on A.film_id = B.id)
-select I1.name, I1.begin_film, I1.end_time,
-       I2.name, I2.begin_film, I2.end_time
-from interval I1
-inner join interval I2 on I1.begin_film < I2.end_time AND I1.end_time > I2.begin_film
-    AND I1.session_id != I2.session_id;
-
 
