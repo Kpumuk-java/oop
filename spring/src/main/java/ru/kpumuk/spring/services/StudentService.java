@@ -35,7 +35,7 @@ public class StudentService {
     }
 
     public StudentDto saveOrUpdate (StudentDto studentDto) {
-        if (studentRepository.existsById(studentDto.getId())) {
+        if (studentDto.getId() != null && studentRepository.existsById(studentDto.getId()) ) {
             Student student = studentRepository.save(studentRepository.getById(studentDto.getId()));
             return new StudentDto(student);
         }

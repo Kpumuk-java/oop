@@ -33,12 +33,11 @@ public class StudentController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StudentDto saveOrUpdateStudent (@RequestBody StudentDto studentDto) {
-        studentDto.setId(null);
         return studentService.saveOrUpdate(studentDto);
     }
 
-    @DeleteMapping("/{id")
-    public void deleteById (Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteById (@PathVariable Long id) {
         studentService.deleteById(id);
     }
 

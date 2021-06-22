@@ -1,4 +1,4 @@
-angular.module('app', []).controller('indexController', function ($scope, $http, $localStorage) {
+angular.module('app', []).controller('indexController', function ($scope, $http) {
     const contextPath = 'http://localhost:8189/student';
 
 
@@ -9,13 +9,13 @@ angular.module('app', []).controller('indexController', function ($scope, $http,
             });
     };
 
-    /*$scope.submitCreateNewProduct = function () {
-        $http.post(contextPath + '/api/v1/products', $scope.newProduct)
+    $scope.submitCreateNewStudent = function () {
+        $http.post(contextPath + '/api/v1/students', $scope.newStudent)
             .then(function (response) {
-                $scope.newProduct = null;
-                $scope.showProductPage();
+                $scope.newStudent = null;
+                $scope.showStudents();
             });
-    };*/
+    };
 
     $scope.deleteStudentById = function (studentID) {
         $http.delete(contextPath + '/api/v1/students/' + studentID).then(function (response) {
